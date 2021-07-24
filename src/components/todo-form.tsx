@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
 import { todoItems, Item } from '../state';
-import { Button, Input } from 'antd';
+import {
+  Button,
+  Form,
+  Input
+} from 'antd';
 import { v4 as uuidV4 } from 'uuid';
 
 const TodoForm = () => {
@@ -26,14 +30,21 @@ const TodoForm = () => {
   };
 
   return (
-    <>
-      <Input
-        placeholder="What's on your mind"
-        value={ formInputValue }
-        onChange={ handleOnChange }
-      />
-      <Button type="primary" onClick={ addItem }>Add</Button>
-    </>
+    <Form
+      name="todo_item"
+      layout="inline"
+    >
+      <Form.Item>
+        <Input
+          placeholder="What's on your mind"
+          value={ formInputValue }
+          onChange={ handleOnChange }
+        />
+      </Form.Item>
+      <Form.Item>
+        <Button type="primary" onClick={ addItem }>Add</Button>
+      </Form.Item>
+    </Form>
   );
 };
 

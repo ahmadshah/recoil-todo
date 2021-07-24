@@ -1,7 +1,8 @@
 import React from 'react';
 import { RecoilRoot } from 'recoil';
 import { Layout } from 'antd';
-import { TodoList } from './components';
+import { TodoFilter, TodoList } from './components';
+import styles from './styles/app.module.scss';
 
 const { Content, Header } = Layout;
 
@@ -10,8 +11,13 @@ const App = () => {
     <RecoilRoot>
       <Layout>
         <Header>Todo</Header>
-        <Content>
-          <TodoList />
+        <Content className={ styles.content_container }>
+          <div>
+            <TodoFilter />
+          </div>
+          <div className={ styles.content }>
+            <TodoList />
+          </div>
         </Content>
       </Layout>
     </RecoilRoot>

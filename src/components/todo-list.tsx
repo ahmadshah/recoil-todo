@@ -1,24 +1,32 @@
 import React from 'react';
 import { useRecoilValue } from 'recoil';
-import { todoItems, Item } from '../state';
-import { List } from 'antd';
+import { filteredTodoItems, Item } from '../state';
+import {
+  Col,
+  List,
+  Row
+} from 'antd';
 import TodoItem from './todo-item';
 import TodoForm from './todo-form';
 
 const TodoList = () => {
-  const items = useRecoilValue(todoItems);
+  const items = useRecoilValue(filteredTodoItems);
 
   return (
-    <>
-      <TodoForm />
-      <List
-        itemLayout="horizontal"
-        dataSource={ items }
-        renderItem={ (item: Item) => (
-          <TodoItem item={ item } />
-        )}
-      />
-    </>
+    <Row>
+      <Col span={24}>
+        <TodoForm />
+      </Col>
+      <Col span={24}>
+        <List
+         itemLayout="horizontal"
+          dataSource={ items }
+          renderItem={ (item: Item) => (
+            <TodoItem item={ item } />
+          )}
+        />
+      </Col>
+    </Row>
   );
 };
 
